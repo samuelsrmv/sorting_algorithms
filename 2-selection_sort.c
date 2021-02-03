@@ -1,36 +1,39 @@
 #include "sort.h"
 
 /**
- * swap - swap values
- * @a: value a
- * @b: value b
- */
-void swap(int *a, int *b)
-{
-	int tmp = *b;
+ * selection_sort - Implements the selection sort on an array
+ * @array: The array that we wants to sort
+ * @size: The size of the array
+ * Return: None
+*/
 
-	*b = *a;
-	*a = tmp;
-}
-/**
- * selection_sort - selection_sort
- * @array: array to sorting
- * @size: size of array
- */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, index = 0;
 
-		while (index < size)
+	size_t i = 0, j = 0, k = 0;
+	int key = 0, temp = 0;
+
+	if (!array || size <= 1)
+		return;
+
+	for (i = 0; i < size - 1; i++)
+	{
+		key = array[i];
+		k = i;
+		for (j = i + 1; j < size; j++)
 		{
-			for (i = index; i < size; i++)
+			if (array[j] < key)
 			{
-				if (array[i] < array[index])
-				{
-					swap(&array[i], &array[index]);
-					print_array(array, size);
-				}
+				key = array[j];
+				k = j;
 			}
-			index++;
 		}
+		if (k != i)
+		{
+			temp = array[i];
+			array[i] = key;
+			array[k] = temp;
+			print_array(array, size);
+		}
+	}
 }
