@@ -11,7 +11,6 @@ void swap(int *a, int *b)
 
 	*b = *a;
 	*a = tmp;
-	b++;
 }
 /**
  * selection_sort - selection_sort
@@ -20,10 +19,8 @@ void swap(int *a, int *b)
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, x, index = 0;
+	size_t i, index = 0;
 
-	if (size >= 2)
-	{
 		while (index < size)
 		{
 			for (i = index; i < size; i++)
@@ -31,19 +28,9 @@ void selection_sort(int *array, size_t size)
 				if (array[i] < array[index])
 				{
 					swap(&array[i], &array[index]);
-					for (x = 0; x < size; x++)
-					{
-					printf("%d", array[x]);
-					if (x != size - 1)
-					{
-						putchar(',');
-						putchar(' ');
-					}
-					}
-					putchar('\n');
 				}
 			}
 			index++;
+			print_array(array, size);
 		}
-	}
 }
