@@ -28,9 +28,9 @@ void selection_sort(int *array, size_t size)
 				if (array[i] < array[index])
 				{
 					swap(&array[i], &array[index]);
+					print_array(array, size);
 				}
 			}
 			index++;
-			print_array(array, size);
 		}
 }
